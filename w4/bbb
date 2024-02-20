@@ -1,0 +1,80 @@
+##Add Other manager and workers to manager1
+
+
+
+
+##To add a manager node
+
+##To get the manager's token type below command on manager1
+docker swarm join-token manager
+
+##FORMAT
+docker swarm join --token <TOKEN> --advertise-addr <IP-ADDRESS-OF-MANAGER-2> <IP-ADDRESS-OF-MANAGER1>:2377
+
+
+
+
+##query the generated token only
+docker swarm join-token worker -q
+docker swarm join-token manager -q
+
+
+
+
+##On Manager2
+##Make shell login
+docker-machine ssh manager2
+
+
+
+
+##Enter the generated command to manager1
+docker swarm join --token <TOKEN> --advertise-addr <IP-ADDRESS-OF-MANAGER-2> <IP-ADDRESS-OF-MANAGER1>:2377
+
+
+
+
+
+##To add a worker node
+##To get the worker's token type below command on manager1
+docker swarm join-token worker
+
+
+##FORMAT
+docker swarm join --token <TOKEN> --advertise-addr <IP-ADDRESS-OF-WORKER-1> <IP-ADDRESS-OF-MANAGER>:2377
+
+docker swarm join --token SWMTKN-1-02mhq3r93a6osiekoxhp9c333qk85kd459nbn1t3x8lsa7ia55-7euhyzs7rrsqtpv64ixyt35qa --advertise-addr $(hostname -i) 192.168.0.8:2377
+
+
+
+
+
+##On worker-2
+docker swarm join --token <TOKEN> --advertise-addr <IP-ADDRESS-OF-WORKER-2> <IP-ADDRESS-OF-MANAGER>:2377
+
+docker swarm join --token SWMTKN-1-02mhq3r93a6osiekoxhp9c333qk85kd459nbn1t3x8lsa7ia55-7euhyzs7rrsqtpv64ixyt35qa --advertise-addr $(hostname -i) 192.168.0.8:2377
+
+
+
+
+
+##Login to manager1
+docker-machine ssh manager1
+
+
+
+
+##Verify the nodes
+docker node ls
+
+
+
+
+##Verify the nodes using role base
+docker node ls -f role=manager
+docker node ls -f role=worker
+
+
+
+
+

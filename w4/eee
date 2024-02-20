@@ -1,0 +1,55 @@
+##Docker service scalling help
+docker service scale --help
+docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
+
+
+
+
+
+##In the Managers node type below command to scale up you task
+docker service scale helloworld=5
+
+
+
+
+
+##Verify the service replica list
+docker service ls helloworld
+
+
+
+
+
+##Verify the updated task list
+docker service ps helloworld
+
+
+
+
+
+
+##Log into any of the node that are running the task and verify
+docker container ps
+OR
+docker container ls
+
+
+
+
+
+##In the Managers node type below command to scale down task
+docker service scale helloworld=3
+
+
+
+
+
+##Verify the service replica list
+docker service ls helloworld
+
+
+
+
+
+##Verify the updated task list
+docker service ps helloworld

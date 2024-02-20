@@ -1,0 +1,27 @@
+##display the details about a service in an easily readable format
+docker service inspect --pretty helloworld
+
+
+
+
+
+##service details in json format
+docker service inspect helloworld
+
+
+
+
+
+##To see which nodes are running the service
+docker service ps helloworld
+
+
+
+
+
+##To double check that you can make a ssh to the exposed node and verify 
+docker-machine ssh <the node name that runs the service>
+
+docker container ps
+OR
+docker container ls

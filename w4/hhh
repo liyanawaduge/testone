@@ -1,0 +1,83 @@
+##You have your existing swarm setup
+##If you don't have the setup follow our 01 & 02 task and then add 3 managers, 3 workers to your swarm environment
+
+
+
+
+
+
+##Verify that all your nodes are actively available
+docker node ls
+
+
+
+
+
+
+##!!If you aren’t still running the redis service from the rolling update tutorial
+docker service create --replicas 3 --name redis-lab --update-delay 10s redis:4.0.14-alpine
+
+
+
+
+
+
+
+##Verify how the swarm manager assigned the tasks to different nodes
+docker service ps redis-lab
+
+
+
+
+
+
+
+##drain a node that had a task assigned to it
+docker node update --availability drain <task assigned worker node name>
+
+
+
+
+
+
+
+##Inspect the node to check its availability
+docker node inspect --pretty <task assigned worker node name>
+
+
+
+
+
+
+
+##Verify the replica count
+docker service ls
+
+
+
+
+
+
+
+
+##how the swarm manager updated the task assignments for the redis-lab service
+docker service ps redis
+
+
+
+
+
+
+
+##return the drained node to an active state
+docker node update --availability active <task assigned worker node name>
+
+
+
+
+
+
+
+
+##Inspect the node to see the updated state
+docker node inspect --pretty <task assigned worker node name>

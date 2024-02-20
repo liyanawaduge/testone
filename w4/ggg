@@ -1,0 +1,33 @@
+##Loginto Manager1 node
+docker-machine ssh manager1
+
+
+
+
+
+##Deploy your Redis tag to the swarm and configure the swarm with a 10 second update delay.
+##he --update-delay flag configures the time delay between updates to a service task or sets of tasks.
+##Note that the following example shows an older Redis tag(4.0.14-alpine):
+docker service create --replicas 3 --name redis-lab --update-delay 10s redis:4.0.14-alpine
+
+
+
+
+
+
+##Inspect the service
+docker service inspect --pretty redis-lab
+
+
+
+
+
+
+##update the container image for redis
+##according to the UpdateConfig policy swarm manager applies the update to node
+docker service update --image redis:5.0.7-alpine redis-lab
+
+
+
+##the new image in the desired state
+docker service inspect --pretty redis-lab

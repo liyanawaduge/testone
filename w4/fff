@@ -1,0 +1,18 @@
+##Remove the service
+docker service rm helloworld
+
+
+
+
+
+##Inspect the service
+docker service inspect helloworld
+
+
+
+
+
+##on the nodes to verify when the tasks have been removed
+docker container ls
+OR
+docker container ps

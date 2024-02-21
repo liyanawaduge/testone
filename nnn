@@ -1,0 +1,42 @@
+##Docker Private Registry
+docker run -d -p 5000:5000 --restart always --name registry registry:2
+
+
+##Check the container
+docker container ls
+
+
+##Download a image
+docker pull alpine
+
+
+##Verify the image
+docker image ls
+
+
+##Tag your Image
+docker image tag alpine 127.0.0.1:5000/my_alpine
+
+##Lets push your image
+docker push 127.0.0.1:5000/my_alpine
+
+
+##Login to your container 
+docker container exec -it <Container ID> sh
+
+
+##Verify the default registry path
+ls /var/lib/registry/
+
+
+
+
+
+##########################TO HAVING A CUSTOM PATH FOR YOUR REGISTRY VOLUME########################
+docker run -d -p 5001:5000 -v /my_reg_vol:/var/lib/registry/ --restart always --name registry_host registry:2
+
+
+##Verify the local path
+ls /my_reg_vol
+
+gfgfdgfdgdfgdg

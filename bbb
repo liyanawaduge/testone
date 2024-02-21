@@ -1,28 +1,8 @@
-
-##Run a container and install some package
-
-docker container run -it alpine sh
-
-{
-	apk update
-	apk add figlet
-	figlet "WELCOME TO WINIT"
-}
-exit
-
-##verify the difference
-docker container diff <contianer ID>
-
-
-
-##Create your own image
-docker container commit <container ID>
-docker image tag <IMAGE_ID> <Image TAG>
-
-OR
-docker container commit <container ID> <New_ImageTAG>
-
-docker container run <New_ImageTAG> figlet hello
-
-
-bbbcvbcvbcvbcvbcvb
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+</body>
+</html>
